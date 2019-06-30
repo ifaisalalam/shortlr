@@ -1,0 +1,94 @@
+extends layout
+
+block content
+  nav(class='white nav z-depth-0')
+    div(class='nav-wrapper' style='padding: 0 20px')
+      a(href='/' class='brand-logo')= 'shortlr.com'
+
+  .content
+    main
+      .row(style='padding: 30px 0; background-image: linear-gradient(to right bottom, #1a237e, #0097a7, #c5cae9)')
+        .col.s12
+          .center.indigo-text.text-lighten-5(style='font-size: 2.5rem;')
+            | Get your short link, now!
+          .row
+            form(action='/create/shorturl', method='POST')
+              .input-field.col.s12.m8.offset-m2(style='padding-right: 1.5rem; margin-bottom: 0')
+                input#long_url.validate(style='background-color: white; border-radius: 5px; padding: .4rem; height: 2rem; border: none', type='text', placeholder='Enter your long URL here', autocomplete='off')
+              .input-field.col.s12.m5.offset-m2(style='padding-right: 1.5rem; margin-top: 0')
+                input#short_url.validate(style='background-color: white; border-radius: 5px; padding: .4rem; height: 2rem; border: none', type='text', placeholder='(Optional) Enter your preferred short link', autocomplete='off')
+              input(type='hidden', name='_csrf', value=csrfToken)
+              .input-field.col.s12.m3(style='margin-top: 0;')
+                button.btn.btn-small.waves-effect.waves-light(style='background-color: #E45212')
+                  | Create Short URL!
+      .container
+        .row
+          .s12.center
+            h1(style='font-size: 1.8em') CREATE YOUR SHORT URL TODAY!
+        .row
+          .center
+            .col.s12.m4
+              svg.svg-4x(role='img', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 512 512', color='#4db6ac')
+                path(fill='currentColor', d='M496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM464 96H345.94c-21.38 0-32.09 25.85-16.97 40.97l32.4 32.4L288 242.75l-73.37-73.37c-12.5-12.5-32.76-12.5-45.25 0l-68.69 68.69c-6.25 6.25-6.25 16.38 0 22.63l22.62 22.62c6.25 6.25 16.38 6.25 22.63 0L192 237.25l73.37 73.37c12.5 12.5 32.76 12.5 45.25 0l96-96 32.4 32.4c15.12 15.12 40.97 4.41 40.97-16.97V112c.01-8.84-7.15-16-15.99-16z')
+              p.text-darken-1(style='font-size: 1.2em') ANALYSIS
+              p.flow-text.grey-text.text-darken-3(style='font-size: 1em')
+                | Get a proper traffic analysis for your short domains.
+            .col.s12.m4
+              svg.svg-4x(role='img', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 512 512', color='#78909c')
+                path(fill='currentColor', d='M507.73 109.1c-2.24-9.03-13.54-12.09-20.12-5.51l-74.36 74.36-67.88-11.31-11.31-67.88 74.36-74.36c6.62-6.62 3.43-17.9-5.66-20.16-47.38-11.74-99.55.91-136.58 37.93-39.64 39.64-50.55 97.1-34.05 147.2L18.74 402.76c-24.99 24.99-24.99 65.51 0 90.5 24.99 24.99 65.51 24.99 90.5 0l213.21-213.21c50.12 16.71 107.47 5.68 147.37-34.22 37.07-37.07 49.7-89.32 37.91-136.73zM64 472c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z')
+              p.text-darken-1(style='font-size: 1.2em') RELIABILITY
+              p.flow-text.grey-text.text-darken-3(style='font-size: 1em')
+                | Guaranteed speed and uptime for your short links.
+            .col.s12.m4
+              svg.svg-4x(role='img', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 512 512', color='#039be5')
+                path(fill='currentColor', d='M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z')
+              p.text-darken-1(style='font-size: 1.2em') CONTROL
+              p.flow-text.grey-text.text-darken-3(style='font-size: 1em')
+                | Edit your short link or change your target URL anytime.
+      .content(style='background-color: #f7fbfd; padding: 20px 0; margin-bottom: 20px')
+        .row
+          .col.s12.m12
+            h4.center Developer Profile
+          .col.offset-m3.offset-s1.s10.m6.divider
+        .row
+          .col.s12.m2.center-on-small-only.offset-m2
+            img.circle.responsive-img(src='/static/images/faisal.jpg', alt='Faisal Alam', width='150')
+          .col.m6
+            .row
+              .col.s12.m12
+                span.black-text(style='font-size: 1.4em')
+                  | Faisal Alam
+                br
+                span(style='font-size: .85em')
+                  | Backend Developer, Penetration Tester
+              .col.s12.m12
+                blockquote(style='border-color: #E45212; font-size: .95em;')
+                  | I am presently pursuing B.Tech in Computer Science from Lovely Professional University, Punjab. I am an autodidact and have taught myself most of the technologies which I presently know. I am a full-stack developer and I also have a keen interest in cyber security.
+        .row
+          .col.m3.offset-m4
+            b E-mail:
+            a(href='mailto:ifaisalalam@gmail.com')= ' ifaisalalam@gmail.com'
+            br
+            b Phone:
+            a(href='call:+917986235984', style='display: inline-flex') &nbsp; +91 798-623-5984
+          .col.m5
+            a(href='https://github.com/ifaisalalam', target='_blank')
+              svg.svg-social-icon(role='img', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 496 512', color='#000000')
+                path(fill='currentColor', d='M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z')
+            = '  '
+            a(href='https://www.linkedin.com/in/ifaisalalam', target='_blank')
+              svg.svg-social-icon(role='img', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 448 512', color='#0077B5')
+                path(fill='currentColor', d='M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z')
+            = '  '
+            a(href='https://fb.me/ifaisalalam', target='_blank')
+              svg.svg-social-icon(role='img', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 448 512', color='#4267B2')
+                path(fill='currentColor', d='M448 56.7v398.5c0 13.7-11.1 24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 468.9 0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7 0 24.8 11.1 24.8 24.7z')
+            = '  '
+            a(href='https://www.instagram.com/ifaisalalam', target='_blank')
+              svg.svg-social-icon(role='img', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 448 512', color='#C12E6B')
+                path(fill='currentColor', d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z')
+    footer.page-footer(style='background-color: #01579b;')
+      .footer-copyright
+        .container
+          | &copy; 2019 Copyright
+
