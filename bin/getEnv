@@ -1,0 +1,29 @@
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+
+const dotEnvExists = fs.existsSync('.env');
+if (dotEnvExists) {
+  console.log('getEnv.js: .env exists, probably running on development server.');
+  process.exit();
+}
+
+const {Storage} = require('@google-cloud/storage');
+const gcs = new Storage();
+const bucketName = `env-vars-shortlr`;
+
+console.log(`Downloading .env from bucket "${bucketName}"`);
+
+gcs
+  .bucket(bucketName)
+  .file('env')
+  .download({
+    destination: path.join(__dirname, '..', '.env')
+  })
+  .then(() => {
+    console.info('getEnv.js: .env downloaded successfully.');
+  })
+  .catch(e => {
+    console.error(`getEnv.js: Failed to download .env file. Error: ${JSON.stringify(e, undefined, 2)}`);
+  });

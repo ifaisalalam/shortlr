@@ -2,4 +2,7 @@
 .git/
 node_modules/
 .env
+.env.example
+.env.prod
 credentials.json
+LICENSE
