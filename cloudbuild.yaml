@@ -1,3 +1,9 @@
 steps:
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - 'cp'
+      - 'gs://env-vars-shortlr'
+      - '.env'
+  
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
