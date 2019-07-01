@@ -5,7 +5,7 @@ const config = {
   keyFileName: process.env.GOOGLE_APPLICATION_CREDENTIALS
 };
 
-module.exports = (options) => new Firestore({
+module.exports = (options = {}) => new Firestore({
   ...config,
   ...options
 });
