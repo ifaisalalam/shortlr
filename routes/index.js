@@ -10,7 +10,7 @@ router.get('/', csrf, (req, res, next) => {
   });
 });
 
-router.get('/test-one', (req, res, next) => {
+router.get('/test', (req, res, next) => {
   res.send({
     secret: process.env.APP_SECRET || 'no-secret',
     test: process.env.TEST_VAR,
