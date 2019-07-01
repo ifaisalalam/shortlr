@@ -10,6 +10,13 @@ router.get('/', csrf, (req, res, next) => {
   });
 });
 
+router.get('/test', (req, res, next) => {
+  res.send({
+    secret: process.env.APP_SECRET || 'no-secret',
+    clientIp: req.connection.remoteAddress
+  });
+});
+
 router.post('/create/shorturl', csrf, (req, res, next) => {
   res.send({
     body: 'Hello'
