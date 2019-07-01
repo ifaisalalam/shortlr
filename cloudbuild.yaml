@@ -1,5 +1,5 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', '-E', 'APP_SECRET:$APP_SECRET']
+    args: ['app', 'deploy', '-E', 'TEST_VAR:$_APP_SECRET']
     env:
       - 'APP_SECRET=$_APP_SECRET'
