@@ -3,7 +3,7 @@ steps:
     args:
       - 'cp'
       - 'gs://env-vars-shortlr/.env'
-      - '.env'
+      - '/workspace/.env'
   
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
