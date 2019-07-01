@@ -13,6 +13,9 @@ const loggingBunyan = new LoggingBunyan();
 const logger = bunyan.createLogger({
   name: process.env.GAE_SERVICE || 'default',
   streams: [
+    // Log to the console at 'info' and above
+    {stream: process.stdout, level: 'info'},
+
     // Log to Stackdriver Logging, logging at 'info' and above
     loggingBunyan.stream('info'),
   ],

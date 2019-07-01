@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const stackdriver = require('../utils/stackdriver');
 
 const dotEnvExists = fs.existsSync('.env');
 if (dotEnvExists) {
@@ -13,7 +14,8 @@ const {Storage} = require('@google-cloud/storage');
 const gcs = new Storage();
 const bucketName = `env-vars-shortlr`;
 
-console.log(`Downloading .env from bucket "${bucketName}"`);
+console.log(`getEnv.js: Downloading .env from bucket "${bucketName}"`);
+stackdriver.logger.info(`getEnv.js: Downloading .env from bucket "${bucketName}"`);
 
 gcs
   .bucket(bucketName)
@@ -23,7 +25,24 @@ gcs
   })
   .then(() => {
     console.info('getEnv.js: .env downloaded successfully.');
+
+    stackdriver.logger.info('getEnv.js: .env downloaded successfully.');
   })
   .catch(e => {
     console.error(`getEnv.js: Failed to download .env file. Error: ${JSON.stringify(e, undefined, 2)}`);
+
+    stackdriver.logger.error(
+      `getEnv.js: Failed to download .env file. Error: ${JSON.stringify(e, undefined, 2)}`
+    );
+
+    const errorEvent = stackdriver.errors.event();
+
+    errorEvent.setMessage(
+      `getEnv.js: Failed to download .env file. Error: ${JSON.stringify(e, undefined, 2)}`
+    );
+    errorEvent.setEventTimeToNow();
+
+    stackdriver.errors.report(errorEvent, () => {
+      console.log('Done error reporting');
+    });
   });
