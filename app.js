@@ -27,14 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-  store: new FirestoreStore({
-    dataset: require('./utils/firestore')({
-      kind: 'express-sessions'
-    })
-  }),
-  secret: process.env.APP_SECRET || 'secret',
-  resave: false,
-  saveUninitialized: true
+    secret: 'abcd'
 }));
 
 app.use(express.static(path.join(__dirname, 'public'), {
