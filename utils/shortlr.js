@@ -6,7 +6,7 @@ const collection = 'shortLinks';
 const generateShortLink = (shortLink = '') => {
   if (shortLink === '') {
     return require('crypto')
-      .randomBytes(((Math.random() * 4) + 2))
+      .randomBytes(Math.floor((Math.random() * 4) + 2))
       .toString('hex');
   }
 
