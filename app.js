@@ -37,6 +37,12 @@ app.use(session({
   saveUninitialized: true
 }));
 
+const errorBag = require('./middlewares/errorBagMiddleware');
+app.use(errorBag);
+
+const oldInput = require('./middlewares/oldInputMiddleware');
+app.use(oldInput);
+
 app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: '30d'
 }));
@@ -45,7 +51,8 @@ app.use('/', routes.indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  const error = createError.NotFound();
+  next(error);
 });
 
 // error handler
@@ -55,13 +62,14 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  if (err.code !== 'EBADCSRFTOKEN') {
+  if (err.code === 'EBADCSRFTOKEN') {
     res.status(403);
   } else {
     res.status(err.status || 500);
   }
 
   res.render('error');
+  next();
 });
 
 app.use(stackdriver.errors.express);

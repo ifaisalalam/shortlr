@@ -1,5 +1,5 @@
 .idea/
 node_modules/
 .env
-.env.prod
+gae_env.yaml
 credentials.json

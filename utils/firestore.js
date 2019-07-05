@@ -1,11 +1,14 @@
 const {Firestore} = require('@google-cloud/firestore');
+const path = require('path');
 
 const config = {
   projectId: process.env.GOOGLE_CLOUD_PROJECT || '',
   keyFileName: process.env.GOOGLE_APPLICATION_CREDENTIALS
 };
 
-module.exports = (options = {}) => new Firestore({
+const firestore = (options = {}) => new Firestore({
   ...config,
   ...options
 });
+
+module.exports = firestore;

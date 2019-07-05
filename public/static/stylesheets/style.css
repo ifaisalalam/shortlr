@@ -50,3 +50,8 @@ html, body {
 .svg-social-icon {
   width: 1.7em;
 }
+
+.input-error {
+  color: #d32f2f !important;
+  font-weight: bold !important;
+}

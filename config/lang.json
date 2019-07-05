@@ -1,0 +1,59 @@
+{
+  "messages": {
+    "success": {
+      "createShortUrl": "Short link created successfully!"
+    },
+    "errors": {
+      "createShortUrl": {
+        "ALREADY_EXISTS": {
+          "code": "ALREADY_EXISTS",
+          "text": "Short link is taken already."
+        },
+        "PROHIBITED_CODE": {
+          "code": "PROHIBITED_CODE",
+          "text": "Short link is taken already."
+        },
+        "ERROR_UNKNOWN": {
+          "code": "ERROR_UNKNOWN",
+          "text": "Something went wrong! Please retry."
+        }
+      },
+      "shortUrl": {
+        "NOT_FOUND": {
+          "code": "NotFoundError",
+          "text": "Not Found"
+        }
+      },
+      "validation": {
+        "longUrl": {
+          "INVALID_URL": {
+            "code": "INVALID_URL",
+            "text": "Please enter a valid URL."
+          },
+          "INVALID_LENGTH": {
+            "code": "INVALID_LENGTH",
+            "text": "Please enter a valid URL."
+          }
+        },
+        "shortUrl": {
+          "NOT_AVAILABLE": {
+            "code": "NOT_AVAILABLE",
+            "text": "This is already taken. Please choose another one."
+          },
+          "INVALID_LENGTH": {
+            "code": "INVALID_LENGTH",
+            "text": "Length should be between 2 and 20."
+          },
+          "NOT_ALPHA_NUM": {
+            "code": "NOT_ALPHA_NUM",
+            "text": "Only alphanumeric characters are allowed."
+          },
+          "BLACKLISTED": {
+            "code": "BLACKLISTED",
+            "text": "The key contains prohibited keywords."
+          }
+        }
+      }
+    }
+  }
+}

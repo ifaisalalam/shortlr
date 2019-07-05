@@ -2,8 +2,8 @@ steps:
   - name: 'gcr.io/cloud-builders/gsutil'
     args:
       - 'cp'
-      - 'gs://env-vars-shortlr/.env'
-      - '/workspace/.env'
+      - 'gs://env-vars-shortlr/gae_env.yaml'
+      - '/workspace/gae_env.yaml'
   
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']

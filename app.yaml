@@ -3,8 +3,11 @@ runtime: nodejs8
 instance_class: F2
 
 env_variables:
-  NODE_ENV: production
-  APP_SECRET: ${APP_SECRET}
+  APP_TITLE: 'shortlr.com | URL Shortener'
+  APP_URL: https://shortlr.com/
+
+include:
+  - gae_env.yaml
 
 handlers:
   - url: /.*

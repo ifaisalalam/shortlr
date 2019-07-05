@@ -1,7 +1,8 @@
 doctype html
 html
+  block vars
   head
-    title= title
+    title #{title}
     meta(name='description', content='Create short URLs and also monitor traffic with proper analysis report.')
 
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
@@ -9,5 +10,29 @@ html
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
 
+    if (_recaptchaKeyJSUrl && _recaptchaKey)
+      script(src=_recaptchaKeyJSUrl)
   body
     block content
+
+    block script
+
+    if (_recaptchaKeyJSUrl && _recaptchaKey)
+      script.
+        var form = document.getElementsByClassName('recaptcha-form')[0];
+
+        form.addEventListener('submit', function (evt) {
+          evt.preventDefault();
+
+          grecaptcha.execute('!{_recaptchaKey}', {action: 'createShortUrl'}).then(function (token) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', 'g-recaptcha-response');
+            input.setAttribute('value', token);
+            form.appendChild(input);
+
+            form.submit();
+          }, function (reason) {
+            console.error(reason);
+          });
+        });

@@ -1,0 +1,26 @@
+{
+  "blacklisted": {
+    "shortLinks": [
+      "login",
+      "signin",
+      "signup",
+      "register",
+      "verify",
+      "shortlr",
+      "create",
+      "dashboard",
+      "profile",
+      "settings",
+      "setting",
+      "social",
+      "reset",
+      "password",
+      "user",
+      "users",
+      "search",
+      "analytics",
+      "report",
+      "error"
+    ]
+  }
+}
