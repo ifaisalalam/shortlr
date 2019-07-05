@@ -4,7 +4,7 @@ instance_class: F2
 
 env_variables:
   APP_TITLE: 'shortlr.com | URL Shortener'
-  APP_URL: https://shortlr.com/
+  APP_URL: https://deft-axon-242411.appspot.com/
 
 includes:
   - gae_env.yaml
