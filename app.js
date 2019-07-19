@@ -32,7 +32,7 @@ app.use(session({
       kind: 'express-sessions'
     })
   }),
-  secret: process.env.APP_SECRET || 'secret',
+  secret: process.env.APP_SECRET,
   resave: false,
   saveUninitialized: true
 }));
