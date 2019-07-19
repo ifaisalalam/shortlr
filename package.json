@@ -22,7 +22,7 @@
     "express": "~4.16.1",
     "express-recaptcha": "^5.0.0",
     "express-session": "^1.16.2",
-    "http-errors": "~1.6.3",
+    "http-errors": "~1.7.3",
     "morgan": "~1.9.1",
     "pug": "^2.0.4",
     "validator": "^11.1.0"
