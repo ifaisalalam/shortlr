@@ -1,5 +1,4 @@
 const {Firestore} = require('@google-cloud/firestore');
-const path = require('path');
 
 const config = {
   projectId: process.env.GOOGLE_CLOUD_PROJECT || '',
