@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@google-cloud/connect-firestore": "^1.0.3",
-    "@google-cloud/error-reporting": "^1.1.1",
+    "@google-cloud/error-reporting": "^2.0.2",
     "@google-cloud/firestore": "^2.2.3",
     "@google-cloud/logging-bunyan": "^1.2.1",
     "@google-cloud/storage": "^3.0.2",
